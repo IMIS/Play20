@@ -257,6 +257,17 @@ class MessagesPlugin(app: Application) extends Plugin {
   }
 
   /**
+   * Is the plugin enabled?
+   *
+   * {{{
+   * messagesplugin=disabled
+   * }}}
+   */
+  override lazy val enabled = {
+    !app.configuration.getString("messagesplugin").filter(_ == "disabled").isDefined
+  }
+
+  /**
    * The underlying internationalisation API.
    */
   def api = messages
